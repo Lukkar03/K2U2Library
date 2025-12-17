@@ -1,0 +1,3 @@
+﻿"ConnectionStrings": {
+  "LibraryDb": "Server=localhost;Database=K2U2Library2DB;Trusted_Connection=True;"
+}

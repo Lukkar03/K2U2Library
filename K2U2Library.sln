@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36717.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K2U2Library", "K2U2Library\K2U2Library.csproj", "{0C3E3F03-4BFD-4128-A316-310B07EB551B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C3E3F03-4BFD-4128-A316-310B07EB551B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C3E3F03-4BFD-4128-A316-310B07EB551B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C3E3F03-4BFD-4128-A316-310B07EB551B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C3E3F03-4BFD-4128-A316-310B07EB551B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2606D0C1-EB0C-4CA1-AE9E-0EF6D43F4D22}
+	EndGlobalSection
+EndGlobal
