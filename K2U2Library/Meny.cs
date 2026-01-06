@@ -18,6 +18,7 @@ public class Meny
             Console.WriteLine("4. Registrera återlämning");
             Console.WriteLine("5. Visa alla aktiva lån");
             Console.WriteLine("6. Sök efter böcker");
+            Console.WriteLine("7. Visa alla medlemmar");
             Console.WriteLine("0. Avsluta");
             Console.Write("Välj ett alternativ: ");
 
@@ -31,6 +32,7 @@ public class Meny
                 case "4": RegisterReturn(); break;
                 case "5": ShowActiveLoans(); break;
                 case "6": SearchBooks(); break;
+                case "7": ShowAllMembers(); break;
                 case "0": running = false; break;
                 default: Console.WriteLine("Ogiltigt val."); break;
             }
@@ -50,7 +52,7 @@ public class Meny
         var book = new Book { Title = title, Author = author, Genre = genre };
         db.Books.Add(book);
         db.SaveChanges();
-        Console.WriteLine("✅ Bok registrerad!");
+        Console.WriteLine("Bok registrerad!");
         Console.WriteLine("\nTryck på valfri tangent för att fortsätta...");
         Console.ReadKey();
         Console.Clear();
@@ -70,7 +72,7 @@ public class Meny
         var member = new Member { FirstName = firstName, LastName = lastName, Email = email };
         db.Members.Add(member);
         db.SaveChanges();
-        Console.WriteLine("✅ Medlem registrerad!");
+        Console.WriteLine("Medlem registrerad!");
         Console.WriteLine("\nTryck på valfri tangent för att fortsätta...");
         Console.ReadKey();
         Console.Clear();
@@ -95,7 +97,7 @@ public class Meny
 
         db.Loans.Add(loan);
         db.SaveChanges();
-        Console.WriteLine("✅ Lån registrerat!");
+        Console.WriteLine("Lån registrerat!");
         Console.WriteLine("\nTryck på valfri tangent för att fortsätta...");
         Console.ReadKey();
         Console.Clear();
@@ -114,16 +116,17 @@ public class Meny
             loan.Status = "Återlämnad";
             loan.ReturnDate = DateOnly.FromDateTime(DateTime.Now);
             db.SaveChanges();
-            Console.WriteLine("✅ Återlämning registrerad!");
+            Console.WriteLine("Återlämning registrerad!");
 
         }
         else
         {
-            Console.WriteLine("⚠️ Inget aktivt lån hittades med det ID:t.");
+            Console.WriteLine("Inget aktivt lån hittades med det ID:t.");
 
         }
             Console.WriteLine("\nTryck på valfri tangent för att fortsätta...");
             Console.ReadKey();
+            Console.Clear();
     }
 
     private void ShowActiveLoans()
@@ -137,7 +140,7 @@ public class Meny
 
         foreach (var loan in loans)
         {
-            Console.WriteLine($"{loan.Fkmember.FirstName} {loan.Fkmember.LastName} lånar '{loan.Fkbook.Title}' sedan {loan.LoanDate}\n");
+            Console.WriteLine($"Lån-ID {loan.LoanId}: {loan.Fkmember.FirstName} {loan.Fkmember.LastName} lånar '{loan.Fkbook.Title}' sedan {loan.LoanDate}\n");
            
         }
         Console.WriteLine("\nTryck på valfri tangent för att fortsätta...");
@@ -168,4 +171,24 @@ public class Meny
             Console.ReadKey();
             Console.Clear();
     }
+
+    private void ShowAllMembers()
+    {
+        using var db = new K2u2library2DbContext();
+
+        var members = db.Members.ToList();
+
+        Console.Clear();
+        Console.WriteLine("Alla medlemmar:\n");
+
+        foreach (var member in members)
+        {
+            Console.WriteLine($"Medlems-ID: {member.MemberId}, {member.FirstName} {member.LastName}");
+        }
+
+        Console.WriteLine("\nTryck på valfri tangent för att fortsätta...");
+        Console.ReadKey();
+        Console.Clear();
+    }
 }
+
